@@ -16,7 +16,7 @@ urlpatterns = [
     ),
     path(
         "logout/",
-        auth_views.LogoutView.as_view(template_name="accounts/logout.html"),
+        auth_views.LogoutView.as_view(template_name="accounts/home.html"),
         name="logout",
     ),
     path("shelter/profile/", views.shelterProfile, name="shelter-profile"),
@@ -28,4 +28,8 @@ urlpatterns = [
     path("profile/<username>/", views.shelter_profile, name="shelterprofile"),
     path("favorite/<int:id>/", views.favorite_pet, name="favorite_pet"),
     path("user/favorites", views.favorites_list, name="favorite_list"),
+    path("inbox/", views.inbox, name="inbox"),
+    path("inbox/<username>", views.Directs, name="directs"),
+    path("send/", views.SendDirect, name="send_direct"),
+    path("send/new/<username>/", views.NewConversation, name="newconversation"),
 ]

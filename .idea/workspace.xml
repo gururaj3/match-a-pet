@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9665eb86-71e6-4d7e-b972-2b123e499402" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accounts/favorite.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/static/accounts/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/static/accounts/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/pet_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/pet_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/shelter_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/shelter_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/view_pets.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/view_pets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/templates/map/maps-shelters.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/templates/map/maps-shelters.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/map/views.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,11 +17,22 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="sean_playdatetest" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="develop" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="gcivil-nyu-org" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="match-a-pet" />
   </component>
   <component name="JupyterTrust" id="2241c1f1-1ae0-4220-92fd-37eeda3f0afd" />
   <component name="ProjectId" id="1ikZ633aHwWWnp8dc45Y5zA7Lvq" />
@@ -37,36 +42,208 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/playdate/templates/playdate" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/playdate/templates/playdate" />
+      <recent name="$PROJECT_DIR$/playdate" />
+      <recent name="$PROJECT_DIR$/map/templates/map" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="helpers" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="match-a-pet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/map" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/map/helpers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="json_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="match-a-pet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/map" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/map/json_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.json_test" />
+        <item itemvalue="Python.helpers" />
+        <item itemvalue="Python.json_test" />
+        <item itemvalue="Python.helpers" />
+        <item itemvalue="Python.json_test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="46740253-44a8-4fd2-8161-7f53785a6840" name="Default Changelist" comment="" />
+      <changelist id="9665eb86-71e6-4d7e-b972-2b123e499402" name="Default Changelist" comment="" />
       <created>1602453371459</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602453371459</updated>
+      <workItem from="1605239186221" duration="25546000" />
+      <workItem from="1605671527701" duration="5194000" />
     </task>
+    <task id="LOCAL-00001" summary="maps testing work">
+      <created>1605303278367</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605303278368</updated>
+    </task>
+    <task id="LOCAL-00002" summary="created helper function to convert user data into geo format we need">
+      <created>1605314758986</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605314758986</updated>
+    </task>
+    <task id="LOCAL-00003" summary="sunday testing">
+      <created>1605473850522</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605473850522</updated>
+    </task>
+    <task id="LOCAL-00004" summary="created playdate app, created client user pet model, created register client user pet form and html page. able to register client user pet. need to update the admin page.">
+      <created>1605492084232</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605492084232</updated>
+    </task>
+    <task id="LOCAL-00005" summary="playdate to upload">
+      <created>1605672500720</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605672500720</updated>
+    </task>
+    <task id="LOCAL-00006" summary="playdate to upload2">
+      <created>1605673893834</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605673893834</updated>
+    </task>
+    <task id="LOCAL-00007" summary="playdate debug">
+      <created>1605674652497</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605674652497</updated>
+    </task>
+    <task id="LOCAL-00008" summary="playdate debug2">
+      <created>1605675059420</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605675059420</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="maps testing work" />
+    <MESSAGE value="created helper function to convert user data into geo format we need" />
+    <MESSAGE value="sunday testing" />
+    <MESSAGE value="created playdate app, created client user pet model, created register client user pet form and html page. able to register client user pet. need to update the admin page." />
+    <MESSAGE value="playdate to upload" />
+    <MESSAGE value="playdate to upload2" />
+    <MESSAGE value="playdate debug" />
+    <MESSAGE value="playdate debug2" />
+    <option name="LAST_COMMIT_MESSAGE" value="playdate debug2" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="1034" y="502" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602461364396">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1034" y="502" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1602461364396" />
-    <state x="135" y="0" width="1905" height="958" key="dock-window-1" timestamp="1605039279545">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="135" y="0" width="1905" height="958" key="dock-window-1/0.0.2560.1400@0.0.2560.1400" timestamp="1605039279545" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1605038802146">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1605038802146" />
+    <state x="1034" y="502" key="#com.intellij.fileTypes.FileTypeChooser" />
+    <state x="1034" y="502" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400@0.0.2560.1400" />
+    <state width="202" height="479" key="Git.Branch.Popup" />
+    <state width="202" height="479" key="Git.Branch.Popup/1920.1080/3360.2100" />
+    <state width="202" height="479" key="Git.Branch.Popup@1920.1080" />
+    <state x="135" y="0" width="1905" height="958" key="dock-window-1" />
+    <state x="135" y="0" width="1905" height="958" key="dock-window-1/0.0.2560.1400@0.0.2560.1400" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/match_a_pet$helpers.coverage" NAME="helpers Coverage Results" MODIFIED="1605313865058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/map" />
+    <SUITE FILE_PATH="coverage/match_a_pet$json_test.coverage" NAME="json_test Coverage Results" MODIFIED="1605312800325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/map" />
   </component>
 </project>

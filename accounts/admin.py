@@ -1,10 +1,12 @@
 from django.contrib import admin
-from .models import ShelterRegisterData, Pet, UserRegisterData, User
+from .models import ShelterRegisterData, Pet, UserRegisterData, User, Message
 from import_export.admin import ImportExportModelAdmin
 
 # Register your models here.
 
 admin.site.site_header = "Math-A-Pet Admin Page"
+
+admin.site.register(Message)
 
 
 @admin.register(User)

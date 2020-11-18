@@ -28,9 +28,12 @@
      <div class="img-wrap d-flex align-items-stretch">
       <div class="img align-self-stretch d-flex align-items-end" style="background-image: url('{{user1.sprofile.shelter_profile_image.url}}');">
        <div class="text mb-4 text-md-center">
-        <h3>{{user1.user}}</h3>
+        <h3>{{user1.username}}</h3>
         <div class="faded">
-         <!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
+            <br>
+            <h6><a href="{% url 'accounts:newconversation' user1.username %}">Send A Message!
+            <i class="fas fa-paper-plane"></i></a></h6>
+            <br>
          <ul class="ftco-social">
           <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
           <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -61,7 +64,7 @@
  <div class="container">
   <div class="row pb-4">
     <div class="col-md-12 heading-section ftco-animate">
-      <h2 class="mb-4">Pets by {{user1.user}}</h2>
+      <h2 class="mb-4">Pets by {{user1.username}}</h2>
     </div>
   </div>
 <div class="row">

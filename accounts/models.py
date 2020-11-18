@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from PIL import Image
+from django.db.models import Max
 
 # User has fields address, city, date_joined, email, first_name,
 # groups, id, is_active, is_clientuser, is_shelter, is_staff, is_superuser,
@@ -70,7 +71,7 @@ class Pet(models.Model):
     shelterRegisterData = models.ForeignKey(
         ShelterRegisterData, null=True, on_delete=models.CASCADE, related_name="pet"
     )
-    favorite = models.ManyToManyField(User, related_name='favorite', blank=True)
+    favorite = models.ManyToManyField(User, related_name="favorite", blank=True)
     pet_name = models.CharField(max_length=80)
     pet_breed = models.CharField(max_length=50)
     pet_age = models.CharField(max_length=10)
@@ -125,3 +126,52 @@ class Pet(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.pet_profile_image3.path)
+
+
+class Message(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user")
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="from_user")
+    recipient = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="to_user"
+    )
+    body = models.TextField(max_length=1000, blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    def send_message(from_user, to_user, body):
+        sender_message = Message(
+            user=from_user, sender=from_user, recipient=to_user, body=body, is_read=True
+        )
+
+        sender_message.save()
+
+        recipient_message = Message(
+            user=to_user,
+            sender=from_user,
+            recipient=from_user,
+            body=body,
+        )
+
+        recipient_message.save()
+
+        return sender_message
+
+    def get_messages(user):
+        users = []
+        messages = (
+            Message.objects.filter(user=user)
+            .values("recipient")
+            .annotate(last=Max("date"))
+            .order_by("-last")
+        )
+        for message in messages:
+            users.append(
+                {
+                    "user": User.objects.get(pk=message["recipient"]),
+                    "last": message["last"],
+                    "unread": Message.objects.filter(
+                        user=user, recipient__pk=message["recipient"], is_read=False
+                    ).count(),
+                }
+            )
+        return users

@@ -1,0 +1,126 @@
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+    <link rel="stylesheet" href="../../static/accounts/css/bulma.css">
+
+<div class="columns is-mobile">
+
+
+<div class="column is-one-quarter">
+<aside class="menu">
+  <h1 class="title is-2">
+  Messages
+  </h1>
+  <a href="{% url 'accounts:newconversation' user.username %}" class="button is-success">New message</a>
+
+<ul style="overflow-y: scroll; height: 500px" class="menu-list">
+
+{% for message in messages %}
+
+<a class="{% if active_direct == message.user.username %}is-active{% endif %}" href="{% url 'accounts:directs' message.user.username %}">
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        {% if user.is_clientuser %}
+        <img src="{{message.user.sprofile.shelter_profile_image.url}}">
+        {% elif user.is_shelter %}
+        <img src="{{message.user.uprofile.user_profile_image.url}}">
+        {% endif %}
+      </figure>
+</div>
+<div class="media-content">
+  <div class="content">
+    <p>
+      <strong>{{message.user.first_name}} {{message.user.last_name}}</strong> <small>@{{message.user.username}}</small>
+    </p>
+      </div>
+    <div>
+    <div class="content">
+      {% if message.unread %}
+      <p style="font-weight: bold; color: #e38fac;">
+        <i class="fas fa-envelope"></i> {{message.unread}}
+      </p>
+      {% endif %}
+    </div>
+    </div>
+  </div>
+  </article>
+</div>
+
+</a>
+{% endfor %}
+
+</ul>
+</aside>
+
+  </div>
+<!--  messages -->
+<div class="column"; id="sample">
+<div style="overflow-y: scroll; height: 500px;" id="botscroll">
+
+{% for direct in directs %}
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <a href = "/profile/{{direct.sender.username}}/">
+          <strong>{{ direct.sender.first_name}} {{ direct.sender.last_name}}</strong> <small>@{{ direct.sender.username }}</small> on <strong><small>{{ direct.date|date:'N d G:i' }}</small></strong></a>
+        </p>
+        {{direct.body}}
+      </div>
+    </div>
+  </article>
+</div>
+
+{% endfor %}
+
+
+</div>
+
+<!--Scrolling from bottom feature  -->
+<script>
+var objDiv = document.getElementById("botscroll");
+objDiv.scrollTop = objDiv.scrollHeight;
+</script>
+
+
+<!--Send message box  -->
+<form role="form" method="POST", action="{% url 'accounts:send_direct' %}">
+  {% csrf_token %}
+<article class="media">
+<figure class="media-left">
+<!--  <p class="image is-64x64">-->
+<!--    {% if user.is_clientuser %}-->
+<!--    <img src="{{user.sprofile.shelter_profile_image.url}}">-->
+<!--    {% elif user.is_shelter %}-->
+<!--    <img src="{{user.uprofile.user_profile_image.url}}">-->
+<!--    {% endif %}-->
+<!--  </p>-->
+</figure>
+<div class="media-content">
+  <input type="hidden" name="to_user" value="{{ active_direct }}">
+  <div class="field">
+    <p class="control">
+      <textarea class="textarea" name="body" ></textarea>
+    </p>
+  </div>
+  <nav class="level">
+    <div class="level-left">
+      <div class="level-item">
+        <button type="submit" name="action" class="button is-info">Send Message</button>
+      </div>
+    </div>
+  </nav>
+</div>
+</article>
+</form>
+</div>
+
+
+
+</div>
+{% endblock %}

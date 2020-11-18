@@ -174,3 +174,13 @@ header ul li a:hover{
     opacity: 10%;
     transform: translate(-50%,-50%);
 }
+
+.badge1{
+    position: absolute;
+    top: 1px;
+    right: -6px;
+    padding: 1px 10px;
+    border-radius: 50%;
+    background: #89c1af;
+    color: white;
+}

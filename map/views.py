@@ -10,7 +10,7 @@ mapbox_access_token = "pk.eyJ1Ijoic2hvcm5idWNrbGU5MyIsImEiOiJja2g5b3QxZnEwM3V3Mn
 
 def map_func(request):
     user = User.objects.all()
-    print(user[450].longitude)
+    # print(user[450].longitude)
     # return render(
     #     request,
     #     'map/maps-shelters.html',
@@ -19,8 +19,11 @@ def map_func(request):
     #         'user': user,
     #     })
 
-    context = {
-    'mapbox_access_token': mapbox_access_token,
-    'user': user,
-    }
-    return render(request, 'map/maps-shelters.html', context)
+    return render(
+        request,
+        "map/maps-shelters.html",
+        {
+            "mapbox_access_token": mapbox_access_token,
+            "user": user,
+        },
+    )

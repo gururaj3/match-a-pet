@@ -7,10 +7,18 @@
     <meta charset="UTF-8">
     <title>MAP TEST</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
-<h1>SHELTER LOCATIONS</h1>
+ <section class="hero-wrap hero-wrap-2">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-end justify-content-center">
+      <div class="col-md-9 ftco-animate pb-5 text-center">
+          <h1>Shelter Locations </h1>
+     </div>
+   </div>
+ </div>
+</section>
     <div id='map' style='width: 1000px; height: 600px;'></div>
     <script>
     mapboxgl.accessToken = '{{mapbox_access_token}}';
@@ -21,21 +29,11 @@
     zoom: 9.5
     });
     
-     var marker = new mapboxgl.Marker()
-            .setLngLat([-73.935242, 40.730610])
+    {% for shelterCoord in user %} // loop through all users
+    var marker = new mapboxgl.Marker()
+            .setLngLat([{{shelterCoord.longitude}}0 , {{shelterCoord.latitude}}0])
             .addTo(map);
-    var marker1 = new mapboxgl.Marker()
-            .setLngLat([-73.945242, 40.780100])
-            .addTo(map);
-    var marker2 = new mapboxgl.Marker()
-            .setLngLat([-73.915242, 40.710100])
-            .addTo(map);
-    var marker3 = new mapboxgl.Marker()
-            .setLngLat([-73.985242, 40.700100])
-            .addTo(map);
-    var marker4 = new mapboxgl.Marker()
-            .setLngLat([-73.995242, 40.710100])
-            .addTo(map);
+    {% endfor %}
     
     </script>
 

@@ -30,7 +30,7 @@ class BaseTest(TestCase):
             user=self.dummy_user,
             shelter_profile_image="default.jpg",
         )
-        self.assertEqual(str(self.dummy_shelterRegisterData), "peter7 Shelter Profile")
+        self.assertEqual(str(self.dummy_shelterRegisterData), "peter7")
 
         self.user = {
             "username": "peter7",
@@ -177,7 +177,7 @@ class BaseTest2(TestCase):
 
         self.assertLessEqual(self.user.sprofile.shelter_profile_image.height, 300)
         self.assertLessEqual(self.user.sprofile.shelter_profile_image.width, 300)
-        self.assertEqual(str(self.user.sprofile), "peter7 Shelter Profile")
+        self.assertEqual(str(self.user.sprofile), "peter7")
 
     def test_save_user_profile_image_correctly(self):
         self.user = User.objects.create(
@@ -223,11 +223,16 @@ class BaseTest2(TestCase):
             pet_age="4",
             pet_color="White",
             pet_gender="Female",
+            pet_profile_image2="default.jpg",
+            pet_profile_image3="default.jpg",
         )
 
-        self.assertEqual(self.dummy_pet.pet_name, "Dog")
+        self.assertEqual(str(self.dummy_pet.pet_name), "Dog")
         self.assertEqual(self.dummy_pet.pet_gender, "Female")
-        # self.assertLessEqual(self.user.uprofile.user_profile_image.width, 300)
+        self.assertLessEqual(self.dummy_pet.pet_profile_image2.width, 300)
+        self.assertLessEqual(self.dummy_pet.pet_profile_image2.height, 300)
+        self.assertLessEqual(self.dummy_pet.pet_profile_image3.width, 300)
+        self.assertLessEqual(self.dummy_pet.pet_profile_image3.height, 300)
         # self.assertEqual(str(self.user.uprofile), "peter7 ClientUser Profile")
 
 

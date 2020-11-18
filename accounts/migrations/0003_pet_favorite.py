@@ -7,13 +7,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0002_auto_20201110_0323'),
+        ("accounts", "0002_auto_20201110_0323"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='pet',
-            name='favorite',
-            field=models.ManyToManyField(blank=True, related_name='favorite', to=settings.AUTH_USER_MODEL),
+            model_name="pet",
+            name="favorite",
+            field=models.ManyToManyField(
+                blank=True, related_name="favorite", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

@@ -21,7 +21,7 @@ class DefaultTestFroms(TestCase):
                 "last_name": "Voltz",
                 "address": "5th Ave",
                 "city": "Manhattan",
-                "state": "New York",
+                "state": "ny",
                 "zip_code": "12189",
                 "password1": "test123abc",
                 "password2": "test123abc",
@@ -54,8 +54,8 @@ class DefaultTestFroms(TestCase):
                 "first_name": "Peter",
                 "last_name": "Voltz",
                 "city": "Manhattan",
-                "state": "New York",
-                "password1": "test123abc",
+                "state": "ny",
+                "zip_code": "12189",
             }
         )
 
@@ -70,7 +70,7 @@ class DefaultTestFroms(TestCase):
                 "first_name": "Peter",
                 "last_name": "Voltz",
                 "city": "Manhattan",
-                "state": "New York",
+                "state": "ny",
             }
         )
 
@@ -147,7 +147,7 @@ class DefaultTestFroms(TestCase):
                 "last_name": "Voltz",
                 "address": "5th Ave",
                 "city": "Manhattan",
-                "state": "New York",
+                "state": "ny",
                 "zip_code": "12189",
             }
         )
@@ -236,7 +236,7 @@ class DefaultTestFroms(TestCase):
                 "last_name": "Voltz",
                 "address": "5th Ave",
                 "city": "Manhattan",
-                "state": "New York",
+                "state": "ny",
                 "zip_code": "12189",
                 "password1": "test123abc",
                 "password2": "test123abc",
@@ -269,7 +269,7 @@ class DefaultTestFroms(TestCase):
                 "first_name": "Peter",
                 "last_name": "Voltz",
                 "city": "Manhattan",
-                "state": "New York",
+                "state": "ny",
                 "password1": "test123abc",
             }
         )
@@ -285,7 +285,7 @@ class DefaultTestFroms(TestCase):
                 "first_name": "Peter",
                 "last_name": "Voltz",
                 "city": "Manhattan",
-                "state": "New York",
+                "state": "ny",
             }
         )
 
@@ -362,7 +362,7 @@ class DefaultTestFroms(TestCase):
                 "last_name": "Voltz",
                 "address": "5th Ave",
                 "city": "Manhattan",
-                "state": "New York",
+                "state": "ny",
                 "zip_code": "12189",
             }
         )

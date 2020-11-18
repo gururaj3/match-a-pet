@@ -9,6 +9,11 @@ from accounts.views import (
     VerificationView,
     petProfile,
     shelter_profile,
+    inbox,
+    Directs,
+    SendDirect,
+    NewConversation,
+    checkDirects,
 )
 from django.contrib.auth.views import LoginView, LogoutView
 
@@ -47,7 +52,7 @@ class TestUrls(SimpleTestCase):
     def test_pets_view_url(self):
         url = reverse("accounts:view-pets")
         self.assertEquals(resolve(url).func.view_class, PetListView)
-        self.assertEquals(resolve(url).route, "pets/view_pets/")
+        self.assertEquals(resolve(url).route, "view_pets/")
 
     def test_pets_profile_url(self):
         url = reverse("accounts:pet-profile", args=["2"])

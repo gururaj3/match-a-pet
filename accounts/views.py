@@ -19,9 +19,9 @@ from .utils import account_activation_token
 from django.contrib.auth import get_user_model
 from django.views import View
 from django.views.generic import ListView
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django_tables2 import SingleTableView
-from .models import Pet, ShelterRegisterData, User
+from .models import Pet, ShelterRegisterData, User, Message
 from .tables import PetTable
 from django.template import loader
 from .filters import PetFilter
@@ -174,13 +174,13 @@ class PetListView(ListView):  # method we will use to load tables into View Pets
     model = Pet
     # table_class = PetTable
     template_name = "accounts/view_pets.html"
-    # paginate_by = 5
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filter'] = PetFilter(self.request.GET, queryset=self.get_queryset())
+        context["filter"] = PetFilter(self.request.GET, queryset=self.get_queryset())
         return context
+
     paginate_by = 5
-    
 
 
 def petsRegister(request):
@@ -199,24 +199,27 @@ def petsRegister(request):
         form = PetForm()
     return render(request, "accounts/pets.html", {"form": form})
 
+
 @login_required
-def favorite_pet(request,id):
+def favorite_pet(request, id):
     pet = get_object_or_404(Pet, id=id)
     if pet.favorite.filter(id=request.user.id).exists():
         pet.favorite.remove(request.user)
     else:
         pet.favorite.add(request.user)
 
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
+
 
 @login_required
 def favorites_list(request):
     user = request.user
     favorites = user.favorite.all()
     context = {
-        'favorites': favorites,
+        "favorites": favorites,
     }
     return render(request, "accounts/favorite.html", context)
+
 
 @login_required
 def shelterProfile(request):
@@ -299,3 +302,79 @@ def add_to_geo(state, city, address):
     # print(resp_json_payload["results"][0]["geometry"]["location"]["lat"])
     # print(resp_json_payload["results"][0]["geometry"]["location"]["lng"])
     return coordinates
+
+
+@login_required
+def inbox(request):
+    user = request.user
+    messages = Message.get_messages(user=user)
+    active_direct = None
+    directs = None
+
+    if messages:
+        message = messages[0]
+        active_direct = message["user"].username
+        directs = Message.objects.filter(user=user, recipient=message["user"])
+        directs.update(is_read=True)
+
+        for message in messages:
+            if message["user"].username == active_direct:
+                message["unread"] = 0
+    context = {"directs": directs, "messages": messages, "active_direct": active_direct}
+
+    template = loader.get_template("accounts/messages.html")
+
+    return HttpResponse(template.render(context, request))
+
+
+@login_required
+def Directs(request, username):
+    user = request.user
+    messages = Message.get_messages(user=user)
+    active_direct = username
+    directs = Message.objects.filter(user=user, recipient__username=username)
+    directs.update(is_read=True)
+
+    for message in messages:
+        if message["user"].username == username:
+            message["unread"] = 0
+
+    context = {"directs": directs, "messages": messages, "active_direct": active_direct}
+
+    template = loader.get_template("accounts/messages.html")
+
+    return HttpResponse(template.render(context, request))
+
+
+@login_required
+def SendDirect(request):
+    from_user = request.user
+    to_user_username = request.POST.get("to_user")
+    body = request.POST.get("body")
+
+    if request.method == "POST":
+        to_user = User.objects.get(username=to_user_username)
+        Message.send_message(from_user, to_user, body)
+        return redirect("accounts:inbox")
+    else:
+        HttpResponseBadRequest()
+
+
+@login_required
+def NewConversation(request, username):
+    from_user = request.user
+    body = ""
+    to_user = User.objects.get(username=username)
+
+    if from_user != to_user:
+        Message.send_message(from_user, to_user, body)
+
+    return redirect("accounts:inbox")
+
+
+def checkDirects(request):
+    directs_count = 0
+    if request.user.is_authenticated:
+        directs_count = Message.objects.filter(user=request.user, is_read=False).count()
+
+    return {"directs_count": directs_count}

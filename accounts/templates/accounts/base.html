@@ -22,45 +22,14 @@
   <link rel="stylesheet" href="../../static/accounts/css/font/flaticon.css">
   <link rel="stylesheet" href="../../static/accounts/css/style.css">
   <link rel="stylesheet" href="../../static/accounts/css/flickity.css" media="screen">
-<!--</head>-->
-<!--<body>-->
-<!-- <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">-->
-<!--   <div class="container">-->
-<!--     <a class="navbar-brand" href="/"><span>Match-a-</span>Pet</a>-->
-<!--     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--       <span class="oi oi-menu"></span> Menu-->
-<!--     </button>-->
 
-<!--     <div class="collapse navbar-collapse" id="ftco-nav">-->
-<!--       <ul class="navbar-nav ml-auto">-->
-
-<!--        {% if user.is_authenticated %}-->
-<!--          <li class="nav-item"><a href="/" class="nav-link">Welcome {{ user.username }}</a></li>-->
-<!--          &lt;!&ndash; <li class="nav-item"><a href="/" class="nav-link">Home</a></li> &ndash;&gt;-->
-<!--          <li class="nav-item"><a href="/pets/register" class="nav-link">Pet Register</a></li>-->
-<!--          <li class="nav-item"><a href="/profile/shelter" class="nav-link">Profile</a></li>-->
-<!--          <li class="nav-item"><a href="/logout/shelter" class="nav-link">Logout</a></li>-->
-<!--        {% else %}-->
-<!--          <li class="nav-item"><a href="/login/shelter" class="nav-link">Login</a></li>-->
-<!--          <li class="nav-item"><a href="/register/shelter" class="nav-link">Sign Up</a></li>-->
-<!--        {% endif %}-->
-<!--         &lt;!&ndash; <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> &ndash;&gt;-->
-<!--       </ul>-->
-<!--     </div>-->
-<!--   </div>-->
-<!-- </nav>-->
-<!--    Font Awesome-->
     <script src="https://kit.fontawesome.com/5c1113721c.js" crossorigin="anonymous"></script>
     <!--    Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@800&family=Lora&display=swap" rel="stylesheet">
     <!--Custom Styling-->
     <link rel="stylesheet" href="../../static/accounts/css/navstyle.css">
-    <style>
-      body{
-          /*background-image: url("../../static/accounts/images/animal_images/background1.gif");*/
-  
-      }
-  </style>
+    <link rel="stylesheet" href="../../static/accounts/css/map.css">
+
 
 </head>
 <body1>
@@ -74,8 +43,18 @@
             {% if user.is_authenticated %}
                 <li><a href="/">Home</a></li>
                 <li><a href="/view_pets">Pets</a></li>
-                <li><a href="/maps/shelters">Maps</a></li>
+                <li><a href="/maps/shelters">Shelters</a></li>
                 {% if user.is_shelter %}
+                <li>
+                    <a href="/inbox">
+
+                            {% if directs_count %}
+                            <i class="fas fa-envelope"></i> Inbox</a>
+                            <span class="badge1">{{ directs_count }}</span>
+                            {% else %}
+                            <i class="far fa-envelope"></i> Inbox</a>
+                            {% endif %}
+                </li>
                     <li>
                         <a href="#">
                             <i class="fas fa-user"></i>
@@ -90,6 +69,15 @@
                     </li>
                 {% elif user.is_clientuser %}
                     <li>
+                            <a href="/inbox">
+                            {% if directs_count %}
+                            <i class="fas fa-envelope"></i> Inbox</a>
+                            <span class="badge1">{{ directs_count }}</span>
+                            {% else %}
+                            <i class="far fa-envelope"></i> Inbox</a>
+                            {% endif %}
+                    </li>
+                    <li>
                         <a href="#">
                             <i class="fas fa-user"></i>
                             {{ user.username }}
@@ -98,6 +86,8 @@
                         <ul>
                             <li><a href="/user/profile">My Profile</a></li>
                             <li><a href="/user/favorites">My Favorites</a></li>
+                            <li><a href="/user/petregister">Register my Pet</a></li>
+                            <li><a href="/user/mypets">My Pets</a></li>
                             <li><a href="/logout" class="logout">Logout</a></li>
                         </ul>
                     </li>
@@ -105,12 +95,8 @@
             {% else %}
             <li><a href="/">Home</a></li>
             <li><a href="/view_pets">Pets</a></li>
-            <li><a href="/maps/shelters">Maps</a></li>
-            <li><a href="#">Login</a>
-                <ul>
-                    <li><a href="/login">User Login</a></li>
-                    <li><a href="/login">Shelter Login</a></li>
-                </ul>
+            <li><a href="/maps/shelters">Shelters</a></li>
+            <li><a href="/login">Login</a>
             </li>
             <li><a href="#">Register</a>
               <ul>
@@ -148,7 +134,7 @@
       <div class="col-md pt-5">
         <div class="ftco-footer-widget pt-md-5 mb-4">
           <h2 class="ftco-heading-2">About</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <p>Meet shelter pets, schedule play dates.</p>
           <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
             <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
             <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -201,7 +187,6 @@
 <script src="../../static/accounts/js/bootstrap-datepicker.js"></script>
 <script src="../../static/accounts/js/scrollax.min.js"></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 <script src="../../static/accounts/js/main.js"></script>
 <script src="../../static/accounts/js/flickity-docs.min.js"></script>
 
