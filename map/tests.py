@@ -8,6 +8,6 @@ from map.views import map_func
 
 class TestUrls(SimpleTestCase):
     def test_map_url(self):
-        url = reverse("map-shelters")
+        url = reverse("map:map-shelters")
         self.assertEquals(resolve(url).func, map_func)
         self.assertEquals(resolve(url).route, "maps/shelters/")

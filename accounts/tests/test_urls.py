@@ -1,12 +1,14 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from accounts.views import (
-    registerShelter,
+    # registerShelter,
     shelterProfile,
-    registerUser,
+    # registerUser,
+    register,
     petsRegister,
     PetListView,
     VerificationView,
+    SearchShelterAndUserView,
     petProfile,
     shelter_profile,
     inbox,
@@ -14,20 +16,21 @@ from accounts.views import (
     SendDirect,
     NewConversation,
     checkDirects,
+    MatchUserView,
 )
 from django.contrib.auth.views import LoginView, LogoutView
 
 
 class TestUrls(SimpleTestCase):
     def test_shelter_register_url(self):
-        url = reverse("accounts:register-shelter")
-        self.assertEquals(resolve(url).func, registerShelter)
-        self.assertEquals(resolve(url).route, "shelter/register/")
+        url = reverse("accounts:register")
+        self.assertEquals(resolve(url).func, register)
+        self.assertEquals(resolve(url).route, "register/")
 
-    def test_user_register_url(self):
-        url = reverse("accounts:register-user")
-        self.assertEquals(resolve(url).func, registerUser)
-        self.assertEquals(resolve(url).route, "user/register/")
+    # def test_user_register_url(self):
+    #     url = reverse("accounts:register-user")
+    #     self.assertEquals(resolve(url).func, registerUser)
+    #     self.assertEquals(resolve(url).route, "user/register/")
 
     def test_shelter_login_url(self):
         url = reverse("accounts:login")
@@ -68,3 +71,13 @@ class TestUrls(SimpleTestCase):
         url = reverse("accounts:activate", args=["avhhk4ll2lbl2", "67172"])
         self.assertEquals(resolve(url).func.view_class, VerificationView)
         self.assertEquals(resolve(url).route, "activate/<uidb64>/<token>")
+
+    def test_shelteruser_profiles(self):
+        url = reverse("accounts:search-user-shelters")
+        self.assertEquals(resolve(url).func.view_class, SearchShelterAndUserView)
+        self.assertEquals(resolve(url).route, "profiles/")
+
+    def test_swiper(self):
+        url = reverse("accounts:swiper")
+        self.assertEquals(resolve(url).func.view_class, MatchUserView)
+        self.assertEquals(resolve(url).route, "user/swiper/")

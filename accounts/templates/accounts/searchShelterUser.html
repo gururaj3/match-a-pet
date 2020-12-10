@@ -1,0 +1,126 @@
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+
+<style>
+
+    .paginationcustom {
+        display: flex;
+        padding-left: 0px;
+        list-style: none;
+        border-radius: 0.25rem;
+        justify-content: center;
+    }
+</style>
+<section class="hero-wrap hero-wrap-2">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 ftco-animate pb-5 text-center">
+<!--					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Pets<i class="fa fa-chevron-right"></i></span></p>-->
+					<h1 class="mb-0 bread">Shelters & Users</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+<section class="ftco-section bg-light">
+
+    <div class="container">
+      <div class="row">
+  
+          <div class="sidebar-box ftco-animate" style="background-color: teal; border-radius: 25px; color: aliceblue;">
+              {% load crispy_forms_tags %}
+              <form method="GET" class="search-form">
+              <div class="form-group">
+  
+                {{ filter.form }}
+                <button type="submit" class="btn" style="margin-left: 50px; background-color: #103e39; color: white;">Filter</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+    <!-- <div class="container"> -->
+        <nav aria-label="Page navigation">
+            <ul class="paginationcustom">
+                <li class="page-item">
+                    {% if page_obj.has_previous %}
+                        <a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a>
+                    {% endif %}
+                </li>
+                <li class="page-item">
+                    <a class="page-link">Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</a>
+                </li>
+                <li class="page-item">
+                    {% if page_obj.has_next %}
+                    <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+  
+  <div class="row">
+    {% if page_obj %}
+    {% for user in page_obj %}
+        <div class="col-md-6 col-lg-3 ftco-animate d-flex align-items-stretch">
+            <div class="staff">
+                <a href=" /../profile/{{ user.username }}">
+                <div class="img-wrap d-flex align-items-stretch">
+  
+                    <div class="img align-self-stretch" style="background-image: url({{user.sprofile.shelter_profile_image.url}}); height: 250px; width: 250px"></div>
+                </div></a>
+                <div class="text pt-3">
+                    <h3><a href=" /../profile/{{ user.username }}">{{user.username}}</a></h3>
+                    <span class="position mb-2">{{user.city}}</span>
+                    <div class="faded">
+                        <p>State: {{user.state}}</p>
+                        <p>Zipcode: {{user.zipcode}}</p>
+                        <p>Address: {{user.address}}</p>
+                        {% if user.is_shelter %}
+                            <p>Shelter:<a href=" /../profile/{{ user.username }}">{{user.username}}</a></p>
+                            <img src="../../static/accounts/images/animal_images/shelter.jpeg" style="height: 50px; width: 50px"/>
+                            <ul class="ftco-social text-center">
+                                <!-- <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li> -->
+    
+                                <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                            </ul>
+                        {% elif user.is_clientuser %}
+                            <p>User:<a href=" /../profile/{{ user.username }}">{{user.username}}</a></p>
+                            <img src="../../static/accounts/images/animal_images/user.png" style="height: 50px; width: 50px"/>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+  
+    
+
+      <nav aria-label="Page navigation">
+        <ul class="paginationcustom">
+            <li class="page-item">
+                {% if page_obj.has_previous %}
+                    <a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a>
+                {% endif %}
+            </li>
+            <li class="page-item">
+                <a class="page-link">Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</a>
+            </li>
+            <li class="page-item">
+                {% if page_obj.has_next %}
+                <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+
+
+
+  </div>
+  </section>
+
+  {% endblock %}
